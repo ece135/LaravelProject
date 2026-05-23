@@ -1,7 +1,7 @@
 @extends('layouts.admin') 
 
-@section('title', 'Admin Panel | Dashboard')
-@section('page_title', 'Dashboard')
+@section('title', 'Admin Panel')
+@section('page_title')
 
 @section('content')
     <div class="row">

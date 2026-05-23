@@ -17,7 +17,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="fas fa-home"></i>
               <p>
                 Homepage
                 <i class="right fas fa-angle-left"></i>
@@ -25,20 +25,20 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="{{ route('categories.index') }}" class="nav-link">
+                  <i class="fas fa-circle"></i>
                   <p>Categories</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="#" class="nav-link">
+                  <i class="fas fa-circle"></i>
                   <p>Products</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="#" class="nav-link">
+                  <i class="fas fa-circle"></i>
                   <p>Reviews</p>
                 </a>
               </li>
@@ -47,10 +47,10 @@
          
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+              <i class="fas fa-shopping-cart"></i>
               <p>
                 Orders
-                <i class="fas fa-angle-left right"></i>
+             
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -108,16 +108,16 @@
           <li class="nav-header">OTHERS</li>
           <li class="nav-item">
             <a href="pages/calendar.html" class="nav-link">
-              <i class="nav-icon fas fa-calendar-alt"></i>
+              <i class="fas fa-comments"></i>
               <p>
                 Contact Messages
-                <span class="badge badge-info right">2</span>
+                
               </p>
             </a>
           </li>
           <li class="nav-item">
             <a href="pages/gallery.html" class="nav-link">
-              <i class="nav-icon far fa-image"></i>
+              <i class="fas fa-users"></i>
               <p>
                 FAQ
               </p>

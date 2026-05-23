@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -23,3 +24,12 @@ require __DIR__.'/auth.php';
 Route::get('/admin-test', function () {
     return view('admin.index'); 
 });
+
+Route::get('/admin/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('/admin/categories/create', [CategoryController::class, 'create'])->name('categories.create');
+Route::post('/admin/categories/store', [CategoryController::class, 'store'])->name('categories.store');
+Route::delete('/admin/categories/destroy/{category}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
+Route::get('/admin/categories/edit/{category}', [CategoryController::class, 'edit'])->name('admin.categories.edit');
+Route::put('/admin/categories/update/{category}', [CategoryController::class, 'update'])->name('admin.categories.update');
+Route::get('/admin/categories/show/{category}', [CategoryController::class, 'show'])->name('admin.categories.show');
+
