@@ -31,13 +31,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.products.index') }}" class="nav-link">
                   <i class="fas fa-circle"></i>
                   <p>Products</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.products.create') }}" class="nav-link">
                   <i class="fas fa-circle"></i>
                   <p>Reviews</p>
                 </a>

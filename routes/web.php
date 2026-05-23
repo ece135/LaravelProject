@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
     
@@ -32,4 +33,10 @@ Route::delete('/admin/categories/destroy/{category}', [CategoryController::class
 Route::get('/admin/categories/edit/{category}', [CategoryController::class, 'edit'])->name('admin.categories.edit');
 Route::put('/admin/categories/update/{category}', [CategoryController::class, 'update'])->name('admin.categories.update');
 Route::get('/admin/categories/show/{category}', [CategoryController::class, 'show'])->name('admin.categories.show');
-
+Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.products.index');
+Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
+Route::post('/admin/products/store', [ProductController::class, 'store'])->name('admin.products.store');
+Route::get('/admin/products/show/{product}', [ProductController::class, 'show'])->name('admin.products.show');
+Route::get('/admin/products/edit/{product}', [ProductController::class, 'edit'])->name('admin.products.edit');
+Route::put('/admin/products/update/{product}', [ProductController::class, 'update'])->name('admin.products.update');
+Route::delete('/admin/products/destroy/{product}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
