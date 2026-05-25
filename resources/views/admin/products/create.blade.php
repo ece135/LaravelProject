@@ -56,7 +56,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <label>Price</label>
-                    <input type="number" step="0.01" class="form-control" name="price" required>
+                    <input type="number" step="0.01" class="form-control" name="price"required>
                 </div>
 
                 <div class="col-md-3">
@@ -76,15 +76,14 @@
             </div>
 
             <div class="form-group">
-                <label for="productImage">Image</label>
-                <div class="input-group">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="image" id="productImage">
-                        <label class="custom-file-label" for="productImage">Choose file</label>
-                    </div>
+                <label for="image">Product Image</label>
+                
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="image" name="image" onchange="this.nextElementSibling.innerText = this.files[0].name">
+                    <label class="custom-file-label" for="image">Choose file...</label>
                 </div>
             </div>
-            
+                        
             <div class="form-group">
                 <label>Status</label>
                 <select class="form-control" name="status" required>

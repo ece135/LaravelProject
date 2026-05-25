@@ -32,7 +32,7 @@
                 <td>{{ \App\Models\Category::find($rs->category_id)->title ?? 'Category Not Found' }}</td>
                 
                 <td>{{ $rs->title }}</td>
-                <td>₺{{ $rs->price }}</td>
+                <td>${{ $rs->price }}</td>
                 <td>{{ $rs->stock }}</td>
                 <td>
                     @if($rs->image)
@@ -53,7 +53,7 @@
                     <a href="{{ route('admin.products.show', ['product' => $rs->id]) }}" class="btn btn-info btn-sm">Show</a>
                     <a href="{{ route('admin.products.edit', ['product' => $rs->id]) }}" class="btn btn-warning btn-sm">Edit</a>
                     
-                    <form action="{{ route('admin.products.destroy', ['product' => $rs->id]) }}" method="POST" style="display:inline;" onsubmit="return confirm('Bu ürünü silmek istediğinize emin misiniz?')">
+                    <form action="{{ route('admin.products.destroy', ['product' => $rs->id]) }}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this product?');">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>

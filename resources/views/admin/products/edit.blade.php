@@ -46,16 +46,25 @@
                 <label>Description</label>
                 <textarea class="form-control" name="description" rows="6">{{ $product->description }}</textarea>
             </div>
+           
             <div class="form-group">
                 <label>Gender</label>
-                <select class="form-control" name="gender" required>
+                <select class="form-control" name="gender" value="{{ $product->gender }}" required>
                     <option value="">Select Gender</option>
                     <option value="Men">Men</option>
                     <option value="Women">Women</option>
                     <option value="Unisex">Unisex</option>
                 </select>
             </div>
-            
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Status</label>
+                    <select class="form-control" name="status" required>
+                        <option value="1">Active</option>
+                        <option value="0">Passive</option>
+                    </select>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-3">
                     <label>Price</label>
@@ -79,26 +88,14 @@
             </div>
 
             <div class="form-group">
-                <label for="productImage">Image</label>
-                <div class="input-group">
-                    <div class="custom-file">
-                        @if($product->image)
-                            <p>Current Image:</p>
-                            <img src="{{ Storage::url($product->image) }}" style="height: 100px; margin-bottom: 10px;">
-                        @endif
-                        <input type="file" class="custom-file-input" name="image" id="productImage" value="{{ $product->image }}">
-                        <label class="custom-file-label" for="productImage">Choose file</label>
-                    </div>
+                <label for="image">Product Image</label>
+                
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="image" name="image" onchange="this.nextElementSibling.innerText = this.files[0].name">
+                    <label class="custom-file-label" for="image">Choose file...</label>
                 </div>
             </div>
             
-            <div class="form-group">
-                <label>Status</label>
-                <select class="form-control" name="status" required>
-                    <option value="1">Active</option>
-                    <option value="0">Passive</option>
-                </select>
-            </div>
 
         </div>
         <div class="card-footer">
@@ -106,4 +103,5 @@
         </div>
     </form>
 </div>
+
 @endsection
