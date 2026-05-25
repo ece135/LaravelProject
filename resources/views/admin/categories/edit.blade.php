@@ -8,7 +8,8 @@
     
     <form action="{{ route('admin.categories.update', ['category' => $category->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @method('PUT') <div class="card-body">
+        @method('PUT') 
+        <div class="card-body">
             
             <div class="form-group">
                 <label>Title</label>
@@ -42,8 +43,8 @@
             <div class="form-group">
                 <label>Status</label>
                 <select class="form-control" name="status" required>
-                    <option value="1" {{ $category->status == 1 ? 'selected' : '' }}>True</option>
-                    <option value="0" {{ $category->status == 0 ? 'selected' : '' }}>False</option>
+                    <option value="1" {{ $category->status == 1 ? 'selected' : '' }}>Active</option>
+                    <option value="0" {{ $category->status == 0 ? 'selected' : '' }}>Passive</option>
                 </select>
             </div>
 

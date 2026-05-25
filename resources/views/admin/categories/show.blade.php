@@ -45,9 +45,9 @@
                     <th>Status</th>
                     <td>
                         @if($category->status == 1)
-                            <span class="badge bg-success">True (Active)</span>
+                            <span class="badge bg-success">Active</span>
                         @else
-                            <span class="badge bg-danger">False (Passive)</span>
+                            <span class="badge bg-danger">Passive</span>
                         @endif
                     </td>
                 </tr>

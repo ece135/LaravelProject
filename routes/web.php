@@ -29,13 +29,13 @@ Route::get('/admin-test', function () {
 Route::get('/admin/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::get('/admin/categories/create', [CategoryController::class, 'create'])->name('categories.create');
 Route::post('/admin/categories/store', [CategoryController::class, 'store'])->name('categories.store');
+Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.products.index');
+Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
+Route::post('/admin/products/store', [ProductController::class, 'store'])->name('admin.products.store');
 Route::delete('/admin/categories/destroy/{category}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
 Route::get('/admin/categories/edit/{category}', [CategoryController::class, 'edit'])->name('admin.categories.edit');
 Route::put('/admin/categories/update/{category}', [CategoryController::class, 'update'])->name('admin.categories.update');
 Route::get('/admin/categories/show/{category}', [CategoryController::class, 'show'])->name('admin.categories.show');
-Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.products.index');
-Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
-Route::post('/admin/products/store', [ProductController::class, 'store'])->name('admin.products.store');
 Route::get('/admin/products/show/{product}', [ProductController::class, 'show'])->name('admin.products.show');
 Route::get('/admin/products/edit/{product}', [ProductController::class, 'edit'])->name('admin.products.edit');
 Route::put('/admin/products/update/{product}', [ProductController::class, 'update'])->name('admin.products.update');

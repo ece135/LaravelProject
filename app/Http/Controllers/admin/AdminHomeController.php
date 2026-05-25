@@ -10,6 +10,6 @@ class AdminHomeController extends Controller
     {   
         $title = "Admin Home Sub Page";
         $message = "Welcome to Admin Panel";
-        return view('admin.categories.index', compact('title', 'message'));
+        return view('categories.index', compact('title', 'message'));
     }
 }   

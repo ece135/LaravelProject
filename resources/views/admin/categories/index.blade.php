@@ -24,7 +24,15 @@
                 @foreach($datalist as $rs)
                 <tr>
                     <td>{{ $rs->id }}</td>
-                    <td>Main Category</td> <td>{{ $rs->title }}</td>
+                    
+                    <td>
+                        @if ($rs->parent_id == null)
+                            Main Category
+                        @else
+                            {{ $rs->parentCategory->title ?? 'Unknown' }}
+                        @endif
+                    </td>
+                    <td>{{ $rs->title }}</td>
                     <td>{{ $rs->keywords }}</td>
                     <td>{{ $rs->description }}</td>
                     <td>
@@ -34,9 +42,9 @@
                     </td>
                     <td>
                         @if($rs->status == 1)
-                            <span class="badge bg-success">True</span>
+                            <span class="badge bg-success">Active</span>
                         @else
-                            <span class="badge bg-danger">False</span>
+                            <span class="badge bg-danger">Passive</span>
                         @endif
                     </td>
                     <td>

@@ -19,10 +19,13 @@
                             <div class="card-body">
     
                                 <div class="form-group">
-                                    <label>Parent</label>
+                                    <label>Parent Category</label>
                                     <select class="form-control" name="parent_id">
-                                        <option value="">Main Category (None)</option>
-                                        </select>
+                                        <option value="">Main Category</option>
+                                        @foreach($categories as $rs)
+                                            <option value="{{ $rs->id }}">{{ $rs->title }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <div class="form-group">
@@ -53,8 +56,8 @@
                                 <div class="form-group">
                                     <label>Status</label>
                                     <select class="form-control" name="status" required>
-                                        <option value="1">True</option>
-                                        <option value="0">False</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Passive</option>
                                     </select>
                                 </div>
 

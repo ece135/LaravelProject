@@ -24,7 +24,11 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+        $categories = Category::all();
+
+        return view('admin.categories.create', [
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -40,6 +44,9 @@ class CategoryController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => 'required|boolean',
         ]);
+        if (empty($validated['parent_id'])) {
+            $validated['parent_id'] = 0;
+        }
 
         if ($request->hasFile('image')) {
             $validated['image'] = $request->file('image')->store('categories', 'public');
@@ -88,7 +95,7 @@ class CategoryController extends Controller
 
         $category->save();
 
-        return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully.');
+        return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
     }
     
 
