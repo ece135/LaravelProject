@@ -18,7 +18,8 @@ class Product extends Model
         'price',
         'stock',
         'gender',
-        'status'
+        'status',
+        'sizes'
        
     ];
 
@@ -31,4 +32,6 @@ class Product extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+   
 }

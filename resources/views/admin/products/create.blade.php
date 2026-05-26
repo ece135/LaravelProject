@@ -59,6 +59,7 @@
                     <input type="number" step="0.01" class="form-control" name="price"required>
                 </div>
 
+
                 <div class="col-md-3">
                     <label>Stock</label>
                     <input type="number" class="form-control" name="stock"required>
@@ -99,3 +100,4 @@
     </form>
 </div>
 @endsection
+

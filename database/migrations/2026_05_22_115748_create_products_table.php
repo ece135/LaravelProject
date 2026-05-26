@@ -24,6 +24,7 @@ return new class extends Migration
             $table->decimal('discount')->default(0);
             $table->boolean('status')->default(false);
             $table->string('gender');
+            $table->string('product_type');
             $table->timestamps();
         });
     }

@@ -31,6 +31,13 @@
                     <td>${{ number_format($product->price, 2) }}</td>
                 </tr>
                 <tr>
+                    <th>Available Sizes</th>
+                    <td>
+                        XS, S, M, L, XL
+                    </td>
+                </tr>
+
+                <tr>
                     <th>Stock</th>
                     <td>{{ $product->stock }}</td>
                 </tr>
