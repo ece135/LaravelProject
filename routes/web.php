@@ -6,6 +6,8 @@ use App\Http\Controllers\admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\Admin\OrderController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
     
@@ -40,3 +42,9 @@ Route::get('/admin/products/show/{product}', [ProductController::class, 'show'])
 Route::get('/admin/products/edit/{product}', [ProductController::class, 'edit'])->name('admin.products.edit');
 Route::put('/admin/products/update/{product}', [ProductController::class, 'update'])->name('admin.products.update');
 Route::delete('/admin/products/destroy/{product}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
+Route::get('/reviews', [ReviewController::class, 'index'])->name('admin.reviews.index');
+Route::post('/reviews/{id}/status', [ReviewController::class, 'updateStatus'])->name('admin.reviews.status');
+Route::delete('/reviews/{id}', [ReviewController::class, 'destroy'])->name('admin.reviews.destroy');
+Route::get('/orders', [OrderController::class, 'index'])->name('admin.orders.index');
+Route::get('/orders/{id}', [OrderController::class, 'show'])->name('admin.orders.show');
+Route::post('/orders/{id}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.status');
