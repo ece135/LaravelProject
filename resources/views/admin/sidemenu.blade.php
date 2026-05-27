@@ -63,7 +63,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="{{ route('admin.faqs.index') }}" class="nav-link {{ Route::is('admin.faqs.*') ? 'active' : '' }}">
               <i class="fas fa-users"></i>
               <p>
                 FAQ
