@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\SettingController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
     
@@ -42,8 +43,11 @@ Route::get('/orders', [OrderController::class, 'index'])->name('admin.orders.ind
 Route::get('/messages', [ContactMessageController::class, 'index'])->name('admin.messages.index');
 Route::get('/reviews', [ReviewController::class, 'index'])->name('admin.reviews.index');
 Route::get('/faqs', [FaqController::class, 'index'])->name('admin.faqs.index');
+Route::get('/settings', [SettingController::class, 'index'])->name('admin.settings.index');
+Route::post('/settings', [SettingController::class, 'update'])->name('admin.settings.update');
 Route::get('/faqs/create', [FaqController::class, 'create'])->name('admin.faqs.create');
 Route::post('/faqs/store', [FaqController::class, 'store'])->name('admin.faqs.store');
+
 Route::get('/faqs/edit/{id}', [FaqController::class, 'edit'])->name('admin.faqs.edit');
 Route::put('/faqs/update/{id}', [FaqController::class, 'update'])->name('admin.faqs.update');
 Route::delete('/faqs/destroy/{id}', [FaqController::class, 'destroy'])->name('admin.faqs.destroy');

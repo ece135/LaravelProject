@@ -73,7 +73,7 @@
          
           <li class="nav-header">PREFERENCES</li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('admin.settings.index') }}" class="nav-link {{ Route::is('admin.settings.*') ? 'active' : '' }}">
               <i class="nav-icon far fa-circle text-danger"></i>
               <p class="text">Settings</p>
             </a>
