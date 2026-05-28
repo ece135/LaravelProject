@@ -3,11 +3,13 @@
 @section('content')
 <div class="container-fluid mt-4">
     <div class="card">
-        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-            <h3 class="card-title">Frequently Asked Questions </h3>
-            <a href="{{ route('admin.faqs.create') }}" class="btn btn-sm btn-success float-end">
-                <i class="fas fa-plus"></i> Add New FAQ
-            </a>
+        <div class="card-header bg-dark text-white">
+            <h3 class="card-title">Frequently Asked Questions</h3>
+            <div class="card-tools">
+                <a href="{{ route('admin.faqs.create') }}" class="btn btn-sm btn-success">
+                    <i class="fas fa-plus"></i> Add New FAQ
+                </a>
+            </div>
         </div>
         <div class="card-body">
             @if(session('success'))
