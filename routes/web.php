@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\PageController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
     
@@ -49,6 +50,12 @@ Route::post('/settings', [SettingController::class, 'update'])->name('admin.sett
 Route::get('/faqs/create', [FaqController::class, 'create'])->name('admin.faqs.create');
 Route::post('/faqs/store', [FaqController::class, 'store'])->name('admin.faqs.store');
 Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
+Route::get('/informational', [PageController::class, 'index'])->name('admin.informational.index');
+Route::get('/informational/create', [PageController::class, 'create'])->name('admin.informational.create');
+Route::post('/informational/store', [PageController::class, 'store'])->name('admin.informational.store');
+Route::get('/informational/edit/{id}', [PageController::class, 'edit'])->name('admin.informational.edit');
+Route::put('/informational/update/{id}', [PageController::class, 'update'])->name('admin.informational.update');
+Route::delete('/informational/destroy/{id}', [PageController::class, 'destroy'])->name('admin.informational.destroy');
 Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('admin.users.edit');
 Route::put('/users/update/{id}', [UserController::class, 'update'])->name('admin.users.update');
 Route::delete('/users/destroy/{id}', [UserController::class, 'destroy'])->name('admin.users.destroy');
