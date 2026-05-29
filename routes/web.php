@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\UserController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
     
@@ -47,7 +48,10 @@ Route::get('/settings', [SettingController::class, 'index'])->name('admin.settin
 Route::post('/settings', [SettingController::class, 'update'])->name('admin.settings.update');
 Route::get('/faqs/create', [FaqController::class, 'create'])->name('admin.faqs.create');
 Route::post('/faqs/store', [FaqController::class, 'store'])->name('admin.faqs.store');
-
+Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
+Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('admin.users.edit');
+Route::put('/users/update/{id}', [UserController::class, 'update'])->name('admin.users.update');
+Route::delete('/users/destroy/{id}', [UserController::class, 'destroy'])->name('admin.users.destroy');
 Route::get('/faqs/edit/{id}', [FaqController::class, 'edit'])->name('admin.faqs.edit');
 Route::put('/faqs/update/{id}', [FaqController::class, 'update'])->name('admin.faqs.update');
 Route::delete('/faqs/destroy/{id}', [FaqController::class, 'destroy'])->name('admin.faqs.destroy');

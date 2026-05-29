@@ -79,7 +79,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('admin.users.index') }}" class="nav-link {{ Route::is('admin.users.*') ? 'active' : '' }}">
               <i class="nav-icon far fa-circle text-warning"></i>
               <p>Users</p>
             </a>
