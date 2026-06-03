@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\FrontController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -38,6 +39,7 @@ Route::prefix('panel')->group(function () {
     })->name('admin.dashboard');
     
     Route::get('/', [AdminHomeController::class, 'index'])->name('admin.dashboard');
+    Route::get('/shop', [FrontController::class, 'shop'])->name('shop');
 
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
     Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
@@ -89,4 +91,10 @@ Route::prefix('panel')->group(function () {
     Route::get('/informational/edit/{id}', [PageController::class, 'edit'])->name('admin.informational.edit');
     Route::put('/informational/update/{id}', [PageController::class, 'update'])->name('admin.informational.update');
     Route::delete('/informational/destroy/{id}', [PageController::class, 'destroy'])->name('admin.informational.destroy');
+    Route::get('/about-us', [FrontController::class, 'about'])->name('about');
+    Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
+    Route::get('/cart', [FrontController::class, 'cart'])->name('cart');
+    Route::get('/wishlist', [FrontController::class, 'wishlist'])->name('wishlist');
+   
+   
 });

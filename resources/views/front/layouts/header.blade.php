@@ -20,22 +20,40 @@
           </div>
           
           <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-center align-items-center w-100 mb-2 mb-lg-0">
-              <li class="nav-item dropdown px-2">
-                <a class="nav-link text-uppercase text-dark" href="#" >Home</a>
+            <ul class="list-unstyled d-flex m-0 align-items-center gap-4">
+  
+              <li>
+                <a class="text-decoration-none text-uppercase text-dark {{ request()->is('/') ? 'fw-bold border-bottom border-dark border-2 pb-1' : '' }}" 
+                  style="letter-spacing: 1px; font-size: 15px;" 
+                  href="{{ url('/') }}">
+                  Home
+                </a>
               </li>
-              <li class="nav-item dropdown px-2">
-                <a class="nav-link text-uppercase text-dark" href="#" >Shop</a>
+
+              <li>
+                <a class="text-decoration-none text-uppercase text-dark {{ request()->is('shop') ? 'fw-bold border-bottom border-dark border-2 pb-1' : '' }}" 
+                  style="letter-spacing: 1px; font-size: 15px;" 
+                  href="{{ route('shop') }}">
+                  Shop
+                </a>
               </li>
-              <li class="nav-item dropdown px-2">
-                <a class="nav-link text-uppercase text-dark" href="#" >Blog</a>
+
+              <li>
+                <a class="text-decoration-none text-uppercase text-dark {{ request()->routeIs('about') ? 'fw-bold border-bottom border-dark border-2 pb-1' : '' }}" 
+                  style="font-weight: 500; letter-spacing: 1px; font-size: 15px;" 
+                  href="{{ route('about') }}">
+                  About Us
+                </a>
               </li>
-              <li class="nav-item dropdown px-2">
-                <a class="nav-link text-uppercase text-dark" href="#" >Pages</a>
+
+              <li>
+                <a class="text-decoration-none text-uppercase text-dark" 
+                  style="font-weight: 500; letter-spacing: 1px; font-size: 15px;" 
+                  href="#">
+                  Contact
+                </a>
               </li>
-              <li class="nav-item px-2">
-                <a class="nav-link text-uppercase text-dark" href="#">Contact</a>
-              </li>
+
             </ul>
           </div>
         </div>
