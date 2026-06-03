@@ -14,7 +14,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             
             <li class="nav-item">
-                <a href="{{ url('/admin') }}" class="nav-link {{ Request::is('admin') ? 'active' : '' }}">
+                <a href="/panel" class="nav-link {{ Request::is('panel') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-home"></i>
                     <p>Homepage</p>
                 </a>
