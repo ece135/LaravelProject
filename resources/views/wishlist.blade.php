@@ -63,11 +63,36 @@
 
       <div class="col-auto">
         <ul class="list-unstyled d-flex m-0 align-items-center gap-3">
-          <li>
-            <a href="{{ route('wishlist') }}" class="text-uppercase text-dark text-decoration-none {{ request()->routeIs('wishlist') ? 'fw-bold' : '' }}" style="font-weight: 500; font-size: 14px;">Wishlist (0)</a>
+          <li class="nav-item position-relative mx-2">
+            <a href="{{ route('wishlist') }}" class="text-dark position-relative d-inline-block">
+              
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+
+              @if(session('wishlist') && count(session('wishlist')) > 0)
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-dark text-white d-flex align-items-center justify-content-center fw-bold" 
+                      style="font-size: 10px; width: 18px; height: 18px; p-0; border: 1px solid white;">
+                  {{ count(session('wishlist')) }}
+                </span>
+              @endif
+            </a>
           </li>
-          <li>
-            <a href="{{ route('cart') }}" class="text-uppercase text-dark text-decoration-none {{ request()->routeIs('cart') ? 'fw-bold' : '' }}" style="font-weight: 500; font-size: 14px;">Cart (0)</a>
+          <li class="nav-item position-relative mx-2">
+            <a href="{{ route('cart') }}" class="text-dark position-relative d-inline-block">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+
+              @if(session('cart') && count(session('cart')) > 0)
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-dark text-white d-flex align-items-center justify-content-center fw-bold" 
+                      style="font-size: 10px; width: 18px; height: 18px; p-0; border: 1px solid white;">
+                  {{ count(session('cart')) }}
+                </span>
+              @endif
+            </a>
           </li>
           <li>
             <a href="#" class="text-dark">

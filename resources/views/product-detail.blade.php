@@ -66,9 +66,22 @@
           <li>
             <a href="{{ route('wishlist') }}" class="text-uppercase text-dark text-decoration-none {{ request()->routeIs('wishlist') ? 'fw-bold' : '' }}" style="font-weight: 500; font-size: 14px;">Wishlist (0)</a>
           </li>
-          <li>
-            <a href="{{ route('cart') }}" class="text-uppercase text-dark text-decoration-none {{ request()->routeIs('cart') ? 'fw-bold' : '' }}" style="font-weight: 500; font-size: 14px;">Cart (0)</a>
-          </li>
+          <li class="nav-item position-relative mx-2">
+            <a href="{{ route('cart') }}" class="text-dark position-relative d-inline-block">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+
+                @if(session('cart') && count(session('cart')) > 0)
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-dark text-white d-flex align-items-center justify-content-center fw-bold" 
+                        style="font-size: 10px; width: 18px; height: 18px; p-0; border: 1px solid white;">
+                    {{ count(session('cart')) }}
+                </span>
+                @endif
+            </a>
+            </li>
           <li>
             <a href="#" class="text-dark">
               <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#search"></use></svg>
@@ -106,28 +119,35 @@
 
             <hr class="mb-4">
 
-            <form action="#" method="POST">
+           <form action="{{ route('cart.add', $product->id) }}" method="POST">
                 @csrf
+                
                 <div class="row g-3 mb-4">
                     <div class="col-sm-6">
                         <label class="form-label text-uppercase" style="font-size: 12px; font-weight: 600;">Size</label>
-                        <select class="form-select rounded-0 border-dark">
+                        <select name="size" class="form-select rounded-0 border-dark">
                             <option value="s">Small</option>
                             <option value="m">Medium</option>
                             <option value="l">Large</option>
                         </select>
                     </div>
+                    
                     <div class="col-sm-6">
                         <label class="form-label text-uppercase" style="font-size: 12px; font-weight: 600;">Quantity</label>
-                        <input type="number" class="form-control rounded-0 border-dark" value="1" min="1">
+                        <input type="number" name="quantity" class="form-control rounded-0 border-dark" value="1" min="1">
                     </div>
                 </div>
 
                 <div class="d-flex gap-3 mt-4">
-                    <button type="submit" class="btn btn-dark rounded-0 text-uppercase flex-grow-1 py-3" style="letter-spacing: 1px;">Add to Cart</button>
-                    <button type="button" class="btn btn-outline-dark rounded-0 px-4 py-3">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    <button type="submit" class="btn btn-dark text-uppercase rounded-0 px-4 py-2" style="font-size: 13px; font-weight: 700; letter-spacing: 1px;">
+                        Add to Cart
                     </button>
+                    
+                    <a href="{{ route('wishlist.toggle', $product->id) }}" class="btn btn-outline-dark rounded-0 px-4 py-3 d-flex align-items-center justify-content-center" title="Add to Wishlist">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="{{ session()->has('wishlist.'.$product->id) ? 'black' : 'none' }}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </a>
                 </div>
             </form>
             

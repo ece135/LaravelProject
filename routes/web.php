@@ -18,6 +18,8 @@ use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\WishlistController;
 
 
 
@@ -102,5 +104,11 @@ require __DIR__.'/auth.php';
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
     Route::post('/register', [RegisterController::class, 'register']);
+
+    Route::get('/cart', [CartController::class, 'index'])->name('cart');
+    Route::post('/add-to-cart/{id}', [CartController::class, 'add'])->name('cart.add');
+    Route::get('/remove-from-cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
+    Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
+    Route::get('/wishlist/toggle/{id}', [WishlistController::class, 'toggle'])->name('wishlist.toggle');
 
     

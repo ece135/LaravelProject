@@ -63,7 +63,7 @@ class ProfileController extends Controller
 
     public function orders()
 {
-    $orders = auth()->user()->orders; 
+    $orders = auth()->user()->orders()->get(); 
 
     return view('front.orders', compact('orders'));
 }
