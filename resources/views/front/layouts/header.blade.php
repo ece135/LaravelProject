@@ -53,7 +53,40 @@
                   Contact
                 </a>
               </li>
-
+              @guest
+              
+              <li class="nav-item ms-lg-3">
+                <a class="btn btn-dark text-white text-uppercase px-4 py-2" href="{{ route('login') }}" style="font-size: 12px; font-weight: 700; letter-spacing: 1px; border-radius: 0;">
+                    Login
+                </a>
+              </li>
+              <li class="nav-item ms-lg-3">
+                  <a class="btn btn-outline-dark text-uppercase px-4 py-2" href="{{ route('register') }}" style="font-size: 12px; font-weight: 700; letter-spacing: 1px; border-radius: 0; border-width: 2px;">
+                      Register
+                  </a>
+              </li>
+              @else
+              <li class="nav-item ms-lg-3 d-flex align-items-center">
+                  <a href="{{ route('profile.edit') }}" 
+                    class="me-3" 
+                    style="display: inline-block; font-size: 12px; letter-spacing: 1px; font-weight: 600; background-color: #347474; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none; transition: all 0.3s ease-in-out;" 
+                    onmouseover="this.style.backgroundColor='#ffa952';" 
+                    onmouseout="this.style.backgroundColor='#347474';">
+                      Hello, {{ Auth::user()->name }}
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="btn btn-danger text-white text-uppercase px-4 py-2" href="{{ route('logout') }}" 
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                    style="font-size: 12px; font-weight: 700; letter-spacing: 1px; border-radius: 0;">
+                      Logout
+                  </a>
+                  
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                  </form>
+              </li>
+              @endguest
             </ul>
           </div>
         </div>
