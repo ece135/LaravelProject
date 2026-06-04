@@ -48,20 +48,20 @@
         <div class="col-3 col-lg-auto">
           <ul class="list-unstyled d-flex m-0">
             <li class="d-none d-lg-block">
-              <a href="#" class="text-uppercase mx-3">Wishlist <span class="wishlist-count">(0)</span></a>
+              <a href="{{ url('/wishlist') }}" class="text-uppercase mx-3">Wishlist <span class="wishlist-count">(0)</span></a>
             </li>
             <li class="d-none d-lg-block">
-              <a href="#" class="text-uppercase mx-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">Cart <span class="cart-count">(0)</span></a>
+              <a href="{{ url('/cart') }}" class="text-uppercase mx-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">Cart <span class="cart-count">(0)</span></a>
             </li>
             <li class="d-lg-none">
-              <a href="#" class="mx-2">
+              <a href="{{ url('/wishlist') }}" class="mx-2">
                 <svg width="24" height="24" viewBox="0 0 24 24">
                   <use xlink:href="#heart"></use>
                 </svg>
               </a>
             </li>
             <li class="d-lg-none">
-              <a href="#" class="mx-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+              <a href="{{ url('/cart') }}" class="mx-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
                 <svg width="24" height="24" viewBox="0 0 24 24">
                   <use xlink:href="#cart"></use>
                 </svg>

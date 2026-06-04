@@ -18,7 +18,7 @@ use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\FrontController;
 
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -32,16 +32,13 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-
-Route::prefix('panel')->group(function () {
-    Route::get('/', function () {
-        return view('admin.index'); 
-    })->name('admin.dashboard');
     
-    Route::get('/', [AdminHomeController::class, 'index'])->name('admin.dashboard');
+    Route::get('/', [FrontController::class, 'home'])->name('home');
+    Route::get('/admin', [AdminHomeController::class, 'index'])->name('admin.dashboard');
+    
     Route::get('/shop', [FrontController::class, 'shop'])->name('shop');
 
-    Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+    Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
     Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
     Route::post('/categories/store', [CategoryController::class, 'store'])->name('categories.store');
     Route::get('/categories/show/{category}', [CategoryController::class, 'show'])->name('admin.categories.show');
@@ -95,6 +92,6 @@ Route::prefix('panel')->group(function () {
     Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
     Route::get('/cart', [FrontController::class, 'cart'])->name('cart');
     Route::get('/wishlist', [FrontController::class, 'wishlist'])->name('wishlist');
+    Route::get('/product/{id}', [FrontController::class, 'productDetail'])->name('product.detail');
+    Route::get('/category/{id}', [FrontController::class, 'category'])->name('category');
    
-   
-});

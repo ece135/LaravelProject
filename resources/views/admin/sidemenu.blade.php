@@ -21,7 +21,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{ route('categories.index') }}" class="nav-link {{ Route::is('categories.*') ? 'active' : '' }}">
+                <a href="{{ route('categories') }}" class="nav-link {{ Route::is('categories.*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-list"></i>
                     <p>Categories</p>
                 </a>

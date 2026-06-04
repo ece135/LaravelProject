@@ -153,11 +153,11 @@
       <div class="col-lg-3 col-md-6 mb-4">
         <h5 class="text-uppercase mb-4" style="font-weight: 600; font-size: 16px;">Quick Links</h5>
         <ul class="list-unstyled" style="line-height: 2;">
-          <li><a href="#" class="text-muted text-decoration-none">Home</a></li>
-          <li><a href="#" class="text-muted text-decoration-none">About Us</a></li>
-          <li><a href="#" class="text-muted text-decoration-none">Shop</a></li>
-          <li><a href="#" class="text-muted text-decoration-none">Categories</a></li>
-          <li><a href="#" class="text-muted text-decoration-none">Contact</a></li>
+          <li><a href="{{ url('/') }}" class="text-muted text-decoration-none">Home</a></li>
+          <li><a href="{{ route('about') }}" class="text-muted text-decoration-none">About Us</a></li>
+          <li><a href="{{ route('shop') }}" class="text-muted text-decoration-none">Shop</a></li>
+          <li><a href="{{ route('home') }}#categories-section" class="text-muted text-decoration-none">Categories</a></li>
+          <li><a href="{{ route('contact') }}" class="text-muted text-decoration-none">Contact</a></li>
         </ul>
       </div>
 

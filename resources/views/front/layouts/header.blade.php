@@ -62,10 +62,10 @@
       <div class="col-auto">
         <ul class="list-unstyled d-flex m-0 align-items-center gap-3">
           <li>
-            <a href="#" class="text-uppercase text-dark text-decoration-none" style="font-weight: 500; font-size: 14px;">Wishlist (0)</a>
+            <a href="{{ route('wishlist') }}" class="text-uppercase text-dark text-decoration-none {{ request()->routeIs('wishlist') ? 'fw-bold' : '' }}" style="font-weight: 500; font-size: 14px;">Wishlist (0)</a>
           </li>
           <li>
-            <a href="#" class="text-uppercase text-dark text-decoration-none" style="font-weight: 500; font-size: 14px;">Cart (0)</a>
+            <a href="{{ route('cart') }}" class="text-uppercase text-dark text-decoration-none {{ request()->routeIs('cart') ? 'fw-bold' : '' }}" style="font-weight: 500; font-size: 14px;">Cart (0)</a>
           </li>
           <li>
             <a href="#" class="text-dark">

@@ -92,6 +92,7 @@
   @foreach($products as $product)
   <div class="col">
     <div class="card h-100 border-0 rounded-0">
+    <a href="{{ route('product.detail', $product->id) }}" class="text-decoration-none text-dark d-block">
       
       <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top rounded-0" alt="{{ $product->title }}" style="height: 380px; width: 100%; object-fit: contain; object-position: top;">
       
@@ -99,7 +100,7 @@
         <h5 class="card-title text-uppercase text-dark" style="font-size: 14px; font-weight: 600; letter-spacing: 1px;">
             {{ $product->title }}
         </h5>
-        
+    </a>    
         <p class="card-text text-muted" style="font-size: 15px;">
             ${{ $product->price }}
         </p>
@@ -132,11 +133,11 @@
       <div class="col-lg-3 col-md-6 mb-4">
         <h5 class="text-uppercase mb-4" style="font-weight: 600; font-size: 16px;">Quick Links</h5>
         <ul class="list-unstyled" style="line-height: 2;">
-          <li><a href="#" class="text-muted text-decoration-none">Home</a></li>
-          <li><a href="#" class="text-muted text-decoration-none">About Us</a></li>
-          <li><a href="#" class="text-muted text-decoration-none">Shop</a></li>
-          <li><a href="#" class="text-muted text-decoration-none">Categories</a></li>
-          <li><a href="#" class="text-muted text-decoration-none">Contact</a></li>
+          <li><a href="{{ url('/') }}" class="text-muted text-decoration-none">Home</a></li>
+          <li><a href="{{ route('about') }}" class="text-muted text-decoration-none">About Us</a></li>
+          <li><a href="{{ route('shop') }}" class="text-muted text-decoration-none">Shop</a></li>
+          <li><a href="{{ route('home') }}#categories-section" class="text-muted text-decoration-none">Categories</a></li>
+          <li><a href="{{ route('contact') }}" class="text-muted text-decoration-none">Contact</a></li>
         </ul>
       </div>
 

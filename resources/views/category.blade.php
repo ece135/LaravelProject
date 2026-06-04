@@ -80,45 +80,62 @@
     </div>
   </div>
 </nav>
-<div class="container py-5My">
+<div class="container py-5" style="min-height: 50vh;">
+    
     <div class="text-center mb-5 pt-4">
-        <h1 class="display-4 text-uppercase" style="font-weight: 700; letter-spacing: 2px;">Our Story</h1>
-        <p class="text-muted text-uppercase" style="letter-spacing: 1px; font-size: 13px;">The Journey of FashionHub</p>
+        <h1 class="display-4 text-uppercase" style="font-weight: 700; letter-spacing: 2px;">{{ $category->name }}</h1>
+        <p class="text-muted text-uppercase" style="letter-spacing: 3px; font-size: 25px;">{{ $category->title }}</p>
     </div>
-
-    <div class="row align-items-center g-5 mb-5">
-        <div class="col-md-6">
-            <div class="position-relative">
-                <img src="{{ asset('front/images/about-banner.jpg') }}" alt="Our Story" class="img-fluid w-100" style="max-height: 500px; object-fit: cover;">
-            </div>
-        </div>
-
-        <div class="col-md-6">
-            <h3 class="text-uppercase mb-4" style="font-weight: 600; letter-spacing: 1px; color: #111;">Modern, Minimalist & Timeless</h3>
-            <p class="text-muted" style="line-height: 1.8; font-size: 15px;">
-                Founded in 2026, <strong>FASHIONHUB</strong> started with a simple vision: to bring curated, premium, and sustainable fashion to individuals who express themselves through their unique style. We believe that clothing is not just what you wear, but a reflection of your identity.
-            </p>
-            <p class="text-muted" style="line-height: 1.8; font-size: 15px;">
-                Every single piece in our collection—from leather jackets to curated accessories—is selected with extreme attention to detail, craftsmanship, and timeless design. We blend contemporary trends with vintage aesthetics to create a modern wardrobe.
-            </p>
+    @if($subCategories->isNotEmpty())
+        <div class="d-flex justify-content-center gap-3 mb-5 flex-wrap">
             
-            <div class="row pt-3">
-                <div class="col-6">
-                    <h5 class="text-uppercase" style="font-weight: 600; font-size: 14px; letter-spacing: 1px;">Our Mission</h5>
-                    <p class="text-muted small">To provide high-quality, sustainable fashion that lasts a lifetime.</p>
-                </div>
-                <div class="col-6">
-                    <h5 class="text-uppercase" style="font-weight: 600; font-size: 14px; letter-spacing: 1px;">Our Vision</h5>
-                    <p class="text-muted small">To become a global destination for modern and minimalist lifestyle curation.</p>
-                </div>
-            </div>
+            <a href="{{ route('category', $category->id) }}" class="btn btn-dark rounded-0 text-uppercase px-4" style="font-size: 13px; letter-spacing: 1px;">
+                All {{ $category->name }}
+            </a>
+
+            @foreach($subCategories as $subCategory)
+            <a href="{{ route('category', $subCategory->id) }}" class="btn btn-outline-dark rounded-0 text-uppercase px-3" style="font-size: 14px; letter-spacing: 2px;">
+                {{ $subCategory->title }}
+            </a>
+            @endforeach
+
         </div>
+    @endif
+    
+    <div class="row row-cols-1 row-cols-md-3 g-5 mt-2">
+      
+      @foreach($products as $product)
+      <div class="col">
+        <div class="card h-100 border-0 rounded-0 position-relative">
+            
+            <a href="{{ route('product.detail', $product->id) }}" class="text-decoration-none text-dark d-block">
+                <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top rounded-0" alt="{{ $product->title }}" style="height: 380px; width: 100%; object-fit: contain; object-position: top; background-color: #fbfbfb;">
+                
+                <div class="card-body text-center mt-3 p-0">
+                    <h5 class="card-title text-uppercase text-dark" style="font-size: 14px; font-weight: 600; letter-spacing: 1px;">
+                        {{ $product->title }}
+                    </h5>
+                    <p class="card-text text-muted mb-3" style="font-size: 15px;">
+                        ${{ number_format($product->price, 2) }}
+                    </p>
+                </div>
+            </a>
+            
+            <button class="btn btn-outline-dark rounded-0 text-uppercase w-100 py-2" style="font-size: 13px; letter-spacing: 1px;">Add to Cart</button>
+            
+        </div>
+      </div>
+      @endforeach
+
+      @if($products->isEmpty())
+      <div class="col-12 text-center py-5">
+          <p class="text-muted" style="font-size: 15px;">New products coming soon!</p>
+          <a href="{{ route('shop') }}" class="btn btn-dark rounded-0 text-uppercase px-4 py-2 mt-2" style="letter-spacing: 1px;">Return to Shop</a>
+      </div>
+      @endif
+
     </div>
 </div>
-    
-    
-    
-
 <footer class="py-5" style="background-color: #fcfcfc; border-top: 1px solid #eaeaea;">
   <div class="container">
     <div class="row">
@@ -142,7 +159,7 @@
           <li><a href="{{ url('/') }}" class="text-muted text-decoration-none">Home</a></li>
           <li><a href="{{ route('about') }}" class="text-muted text-decoration-none">About Us</a></li>
           <li><a href="{{ route('shop') }}" class="text-muted text-decoration-none">Shop</a></li>
-          <li><a href="{{ route('home') }}#categories-section" class="text-muted text-decoration-none">Categories</a></li>
+          <li><a href="{{ route('home') }}#categories-section"class="text-muted text-decoration-none">Categories</a></li>
           <li><a href="{{ route('contact') }}" class="text-muted text-decoration-none">Contact</a></li>
         </ul>
       </div>

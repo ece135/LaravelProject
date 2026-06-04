@@ -80,45 +80,60 @@
     </div>
   </div>
 </nav>
-<div class="container py-5My">
-    <div class="text-center mb-5 pt-4">
-        <h1 class="display-4 text-uppercase" style="font-weight: 700; letter-spacing: 2px;">Our Story</h1>
-        <p class="text-muted text-uppercase" style="letter-spacing: 1px; font-size: 13px;">The Journey of FashionHub</p>
-    </div>
-
-    <div class="row align-items-center g-5 mb-5">
-        <div class="col-md-6">
+<div class="container py-5 my-5">
+    <div class="row g-5 align-items-center">
+        
+        <div class="col-md-6 text-center">
             <div class="position-relative">
-                <img src="{{ asset('front/images/about-banner.jpg') }}" alt="Our Story" class="img-fluid w-100" style="max-height: 500px; object-fit: cover;">
+                <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid w-100" style="max-height: 600px; object-fit: contain; background-color: #fbfbfb;" alt="{{ $product->title }}">
             </div>
         </div>
 
         <div class="col-md-6">
-            <h3 class="text-uppercase mb-4" style="font-weight: 600; letter-spacing: 1px; color: #111;">Modern, Minimalist & Timeless</h3>
-            <p class="text-muted" style="line-height: 1.8; font-size: 15px;">
-                Founded in 2026, <strong>FASHIONHUB</strong> started with a simple vision: to bring curated, premium, and sustainable fashion to individuals who express themselves through their unique style. We believe that clothing is not just what you wear, but a reflection of your identity.
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb text-uppercase" style="font-size: 12px; letter-spacing: 1px;">
+                    <li class="breadcrumb-item"><a href="{{ route('shop') }}" class="text-dark text-decoration-none">Shop</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ $product->title }}</li>
+                </ol>
+            </nav>
+
+            <h2 class="text-uppercase mb-3" style="font-weight: 700; letter-spacing: 1px;">{{ $product->title }}</h2>
+            <h4 class="text-muted mb-4">${{ number_format($product->price, 2) }}</h4>
+
+            <p class="text-muted mb-5" style="line-height: 1.8; font-size: 15px;">
+                Discover the perfect blend of modern aesthetic and timeless design. Crafted with premium materials, this piece is an essential addition to your curated wardrobe.
             </p>
-            <p class="text-muted" style="line-height: 1.8; font-size: 15px;">
-                Every single piece in our collection—from leather jackets to curated accessories—is selected with extreme attention to detail, craftsmanship, and timeless design. We blend contemporary trends with vintage aesthetics to create a modern wardrobe.
-            </p>
+
+            <hr class="mb-4">
+
+            <form action="#" method="POST">
+                @csrf
+                <div class="row g-3 mb-4">
+                    <div class="col-sm-6">
+                        <label class="form-label text-uppercase" style="font-size: 12px; font-weight: 600;">Size</label>
+                        <select class="form-select rounded-0 border-dark">
+                            <option value="s">Small</option>
+                            <option value="m">Medium</option>
+                            <option value="l">Large</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label text-uppercase" style="font-size: 12px; font-weight: 600;">Quantity</label>
+                        <input type="number" class="form-control rounded-0 border-dark" value="1" min="1">
+                    </div>
+                </div>
+
+                <div class="d-flex gap-3 mt-4">
+                    <button type="submit" class="btn btn-dark rounded-0 text-uppercase flex-grow-1 py-3" style="letter-spacing: 1px;">Add to Cart</button>
+                    <button type="button" class="btn btn-outline-dark rounded-0 px-4 py-3">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </button>
+                </div>
+            </form>
             
-            <div class="row pt-3">
-                <div class="col-6">
-                    <h5 class="text-uppercase" style="font-weight: 600; font-size: 14px; letter-spacing: 1px;">Our Mission</h5>
-                    <p class="text-muted small">To provide high-quality, sustainable fashion that lasts a lifetime.</p>
-                </div>
-                <div class="col-6">
-                    <h5 class="text-uppercase" style="font-weight: 600; font-size: 14px; letter-spacing: 1px;">Our Vision</h5>
-                    <p class="text-muted small">To become a global destination for modern and minimalist lifestyle curation.</p>
-                </div>
-            </div>
         </div>
     </div>
 </div>
-    
-    
-    
-
 <footer class="py-5" style="background-color: #fcfcfc; border-top: 1px solid #eaeaea;">
   <div class="container">
     <div class="row">
