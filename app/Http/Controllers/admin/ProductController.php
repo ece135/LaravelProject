@@ -1,19 +1,38 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\Models\Category; 
 use App\Models\Product;  
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Controller;
+
 
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $datalist = Product::all();
-        return view('admin.products.index', compact('datalist'));
+        $query = Product::query();
+
+        if ($request->filled('search')) {
+            $searchTerm = $request->search;
+            $query->where(function($q) use ($searchTerm) {
+                $q->where('title', 'LIKE', '%' . $searchTerm . '%')
+                ->orWhere('keywords', 'LIKE', '%' . $searchTerm . '%')
+                ->orWhere('description', 'LIKE', '%' . $searchTerm . '%');
+            });
+        }
+
+        if ($request->filled('max_price')) {
+            $query->where('price', '<=', $request->max_price);
+        }
+
+
+        $products = $query->where('status', 1)->get(); 
+
+        return view('shop', compact('products'));
     }
 
     public function create()

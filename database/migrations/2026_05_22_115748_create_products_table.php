@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->constrained('categories')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('title'); 
             $table->string('keywords')->nullable(); 
             $table->text('description')->nullable();
@@ -24,7 +25,6 @@ return new class extends Migration
             $table->decimal('discount')->default(0);
             $table->boolean('status')->default(false);
             $table->string('gender');
-            $table->string('product_type');
             $table->timestamps();
         });
     }

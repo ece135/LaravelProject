@@ -5,7 +5,7 @@
     <div class="card-header">
         <h3 class="card-title">Category Detail: {{ $category->title }}</h3>
         <div class="card-tools">
-            <a href="{{ route('categories.index') }}" class="btn btn-default btn-sm">Back to List</a>
+            <a href="{{ route('categories') }}" class="btn btn-default btn-sm">Back to List</a>
         </div>
     </div>
     <div class="card-body p-0">

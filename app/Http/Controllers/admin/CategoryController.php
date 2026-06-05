@@ -43,6 +43,7 @@ class CategoryController extends Controller
             'description' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => 'required|boolean',
+            
         ]);
         if (empty($validated['parent_id'])) {
             $validated['parent_id'] = 0;
@@ -52,7 +53,7 @@ class CategoryController extends Controller
             $validated['image'] = $request->file('image')->store('categories', 'public');
         }
         Category::create($validated);
-        return redirect()->route('categories.index')->with('success', 'Category created successfully.');
+        return redirect()->route('categories')->with('success', 'Category created successfully.');
     }
 
     /**
@@ -79,6 +80,7 @@ class CategoryController extends Controller
         $request->validate([
         'title' => 'required|string|max:255',
         'status' => 'required|boolean',
+       
     ]);
 
     
@@ -86,6 +88,7 @@ class CategoryController extends Controller
         $category->keywords = $request->input('keywords');
         $category->description = $request->input('description');
         $category->status = $request->input('status');
+      
 
     
         if ($request->hasFile('image')) {
@@ -95,7 +98,7 @@ class CategoryController extends Controller
 
         $category->save();
 
-        return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
+        return redirect()->route('categories')->with('success', 'Category updated successfully.');
     }
     
 
@@ -106,6 +109,6 @@ class CategoryController extends Controller
     {
        $category ->delete();
 
-        return redirect()->route('categories.index')->with('success', 'Deleted successfully');
+        return redirect()->route('categories')->with('success', 'Deleted successfully');
     }
 }

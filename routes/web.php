@@ -5,21 +5,22 @@ use Inertia\Inertia;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Admin\AdminHomeController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\ProductController; 
-use App\Http\Controllers\Admin\ReviewController;
-use App\Http\Controllers\Admin\OrderController;
-use App\Http\Controllers\Admin\ContactMessageController;
-use App\Http\Controllers\Admin\FaqController;
-use App\Http\Controllers\Admin\SettingController;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\admin\AdminHomeController;
+use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\ProductController; 
+use App\Http\Controllers\admin\ReviewController;
+use App\Http\Controllers\admin\OrderController;
+use App\Http\Controllers\admin\ContactMessageController;
+use App\Http\Controllers\admin\FaqController;
+use App\Http\Controllers\admin\SettingController;
+use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\admin\PageController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\Auth\CheckoutController;
 
 
 
@@ -38,9 +39,9 @@ require __DIR__.'/auth.php';
 
     
     Route::get('/', [FrontController::class, 'home'])->name('home');
-    Route::get('/admin', [AdminHomeController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin-panel', [AdminHomeController::class, 'index'])->name('admin.dashboard');
     
-    Route::get('/shop', [FrontController::class, 'shop'])->name('shop');
+    Route::get('/shop', [ProductController::class, 'index'])->name('shop');
 
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
     Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
@@ -50,15 +51,15 @@ require __DIR__.'/auth.php';
     Route::put('/categories/update/{category}', [CategoryController::class, 'update'])->name('admin.categories.update');
     Route::delete('/categories/destroy/{category}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
 
-    Route::get('/products', [ProductController::class, 'index'])->name('admin.products.index');
-    Route::get('/products/create', [ProductController::class, 'create'])->name('admin.products.create');
-    Route::post('/products/store', [ProductController::class, 'store'])->name('admin.products.store');
-    Route::get('/products/show/{product}', [ProductController::class, 'show'])->name('admin.products.show');
-    Route::get('/products/edit/{product}', [ProductController::class, 'edit'])->name('admin.products.edit');
-    Route::put('/products/update/{product}', [ProductController::class, 'update'])->name('admin.products.update');
-    Route::delete('/products/destroy/{product}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
-
-
+    Route::prefix('admin')->group(function () {
+        Route::get('/products', [ProductController::class, 'index'])->name('admin.products.index');
+        Route::get('/products/create', [ProductController::class, 'create'])->name('admin.products.create');
+        Route::post('/products/store', [ProductController::class, 'store'])->name('admin.products.store');
+        Route::get('/products/show/{product}', [ProductController::class, 'show'])->name('admin.products.show');
+        Route::get('/products/edit/{product}', [ProductController::class, 'edit'])->name('admin.products.edit');
+        Route::put('/products/update/{product}', [ProductController::class, 'update'])->name('admin.products.update');
+        Route::delete('/products/destroy/{product}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
+    });
     Route::get('/orders', [OrderController::class, 'index'])->name('admin.orders.index');
     Route::get('/orders/{id}', [OrderController::class, 'show'])->name('admin.orders.show');
     Route::post('/orders/{id}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.status');
@@ -110,5 +111,7 @@ require __DIR__.'/auth.php';
     Route::get('/remove-from-cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
     Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
     Route::get('/wishlist/toggle/{id}', [WishlistController::class, 'toggle'])->name('wishlist.toggle');
+    Route::get('/checkout', [App\Http\Controllers\CheckoutController::class, 'index'])->name('checkout');
+    Route::post('/checkout-process', [App\Http\Controllers\CheckoutController::class, 'process'])->name('checkout.process');
 
     

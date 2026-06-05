@@ -189,7 +189,7 @@
       <div class="col-lg-3 col-md-6 mb-4">
         <h5 class="text-uppercase mb-4" style="font-weight: 600; font-size: 16px;">Help & Info</h5>
         <ul class="list-unstyled" style="line-height: 2;">
-          <li><a href="#" class="text-muted text-decoration-none">Track Your Order</a></li>
+          <li><a href="{{ route('profile.orders') }}" class="text-muted text-decoration-none">Track Your Order</a></li>
           <li><a href="#" class="text-muted text-decoration-none">Returns + Exchanges</a></li>
           <li><a href="#" class="text-muted text-decoration-none">Shipping + Delivery</a></li>
           <li><a href="#" class="text-muted text-decoration-none">FAQs</a></li>

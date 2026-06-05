@@ -3,23 +3,43 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Product; // Ürün modelini çağırıyoruz
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // GİDEN ÜRÜNLERİ OTOMATİK İÇERİ IŞINLIYORUZ
+        // Not: Eğer senin veritabanında 'name' yerine 'title' yazıyorsa, aşağıdaki 'name' kelimelerini 'title' yapman yeterli.
+        
+        Product::create([
+            'name' => 'Luxury Minimalist Jacket', 
+            'price' => 299.99,
+            'image' => 'uploads/product1.jpg', // Git'ten kurtarılan resim klasörün
+            'description' => 'Premium quality luxury jacket for everyday elegance.'
+        ]);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        Product::create([
+            'name' => 'Classic Black Trousers',
+            'price' => 149.95,
+            'image' => 'uploads/product2.jpg',
+            'description' => 'Elegant design with perfect fit.'
+        ]);
+
+        Product::create([
+            'name' => 'Premium Leather Bag',
+            'price' => 399.00,
+            'image' => 'uploads/product3.jpg',
+            'description' => '100% genuine leather luxury bag.'
+        ]);
+        
+        Product::create([
+            'name' => 'Silk Evening Dress',
+            'price' => 599.00,
+            'image' => 'uploads/product4.jpg',
+            'description' => 'Stunning silk dress for special occasions.'
         ]);
     }
 }

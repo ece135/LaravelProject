@@ -63,8 +63,20 @@
 
       <div class="col-auto">
         <ul class="list-unstyled d-flex m-0 align-items-center gap-3">
-          <li>
-            <a href="{{ route('wishlist') }}" class="text-uppercase text-dark text-decoration-none {{ request()->routeIs('wishlist') ? 'fw-bold' : '' }}" style="font-weight: 500; font-size: 14px;">Wishlist (0)</a>
+          <li class="nav-item position-relative mx-2">
+            <a href="{{ route('wishlist') }}" class="text-dark position-relative d-inline-block">
+              
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+
+              @if(session('wishlist') && count(session('wishlist')) > 0)
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-dark text-white d-flex align-items-center justify-content-center fw-bold" 
+                      style="font-size: 10px; width: 18px; height: 18px; p-0; border: 1px solid white;">
+                  {{ count(session('wishlist')) }}
+                </span>
+              @endif
+            </a>
           </li>
           <li class="nav-item position-relative mx-2">
             <a href="{{ route('cart') }}" class="text-dark position-relative d-inline-block">
@@ -106,11 +118,11 @@
             <nav aria-label="breadcrumb" class="mb-4">
                 <ol class="breadcrumb text-uppercase" style="font-size: 12px; letter-spacing: 1px;">
                     <li class="breadcrumb-item"><a href="{{ route('shop') }}" class="text-dark text-decoration-none">Shop</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ $product->title }}</li>
+                    <li class="breadcrumb-item active" aria-current="page" >{{ $product->title }}</li>
                 </ol>
             </nav>
 
-            <h2 class="text-uppercase mb-3" style="font-weight: 700; letter-spacing: 1px;">{{ $product->title }}</h2>
+            <h2 class="text-uppercase mb-3" style="font-weight: 700; letter-spacing: 1px; font-size: 35px;">{{ $product->title }}</h2>
             <h4 class="text-muted mb-4">${{ number_format($product->price, 2) }}</h4>
 
             <p class="text-muted mb-5" style="line-height: 1.8; font-size: 15px;">
@@ -185,7 +197,7 @@
       <div class="col-lg-3 col-md-6 mb-4">
         <h5 class="text-uppercase mb-4" style="font-weight: 600; font-size: 16px;">Help & Info</h5>
         <ul class="list-unstyled" style="line-height: 2;">
-          <li><a href="#" class="text-muted text-decoration-none">Track Your Order</a></li>
+          <li><a href="{{ route('profile.orders') }}" class="text-muted text-decoration-none">Track Your Order</a></li>
           <li><a href="#" class="text-muted text-decoration-none">Returns + Exchanges</a></li>
           <li><a href="#" class="text-muted text-decoration-none">Shipping + Delivery</a></li>
           <li><a href="#" class="text-muted text-decoration-none">FAQs</a></li>

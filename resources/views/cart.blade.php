@@ -173,7 +173,7 @@
                     <strong class="text-uppercase">Total</strong>
                     <strong>$400.00</strong>
                 </div>
-                <button class="btn btn-dark rounded-0 text-uppercase w-100 py-3" style="letter-spacing: 1px;">Proceed to Checkout</button>
+                <a href="{{ route('checkout') }}" class="btn btn-dark rounded-0 text-uppercase w-100 py-3" style="letter-spacing: 1px; {{ request()->routeIs('checkout') ? 'fw-bold' : '' }}">Proceed to Checkout</a>
             </div>
         </div>
     </div>
@@ -211,7 +211,7 @@
       <div class="col-lg-3 col-md-6 mb-4">
         <h5 class="text-uppercase mb-4" style="font-weight: 600; font-size: 16px;">Help & Info</h5>
         <ul class="list-unstyled" style="line-height: 2;">
-          <li><a href="#" class="text-muted text-decoration-none">Track Your Order</a></li>
+          <li><a href="{{ route('profile.orders') }}" class="text-muted text-decoration-none">Track Your Order</a></li>
           <li><a href="#" class="text-muted text-decoration-none">Returns + Exchanges</a></li>
           <li><a href="#" class="text-muted text-decoration-none">Shipping + Delivery</a></li>
           <li><a href="#" class="text-muted text-decoration-none">FAQs</a></li>

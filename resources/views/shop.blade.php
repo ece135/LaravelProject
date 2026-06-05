@@ -20,6 +20,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/style.css') }}">
 </head>
+<body>
+
 <nav class="navbar navbar-expand-lg bg-light text-uppercase fs-6 p-3 border-bottom align-items-center">
   <div class="container-fluid">
     <div class="row justify-content-between align-items-center w-100">
@@ -65,11 +67,9 @@
         <ul class="list-unstyled d-flex m-0 align-items-center gap-3">
           <li class="nav-item position-relative mx-2">
             <a href="{{ route('wishlist') }}" class="text-dark position-relative d-inline-block">
-              
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
               </svg>
-
               @if(session('wishlist') && count(session('wishlist')) > 0)
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-dark text-white d-flex align-items-center justify-content-center fw-bold" 
                       style="font-size: 10px; width: 18px; height: 18px; p-0; border: 1px solid white;">
@@ -85,7 +85,6 @@
                 <circle cx="20" cy="21" r="1"></circle>
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
               </svg>
-
               @if(session('cart') && count(session('cart')) > 0)
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-dark text-white d-flex align-items-center justify-content-center fw-bold" 
                       style="font-size: 10px; width: 18px; height: 18px; p-0; border: 1px solid white;">
@@ -94,50 +93,91 @@
               @endif
             </a>
           </li>
-          <li>
-            <a href="#" class="text-dark">
-              <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#search"></use></svg>
-            </a>
-          </li>
         </ul>
       </div>
 
     </div>
   </div>
 </nav>
+
 <div class="container py-5" style="min-height: 50vh;">
     
     <div class="text-center mb-5">
         <h1 class="display-4 text-uppercase" style="font-weight: 700;">Shop</h1>
         <p class="text-muted">Discover our complete collection.</p>
     </div>
+
+    <div class="card border-0 shadow-lg p-4 mb-5" style="border-radius: 15px; background-color: #ffffff; border-top: 5px solid #8c9282 !important;">
+        <h5 class="mb-3" style="color: #4a4a4a; font-weight: 600;">
+            Find Your Perfect Style
+        </h5>
+        <form action="{{ route('shop') }}" method="GET">
+            <div class="row g-3 align-items-center">
+                
+                <div class="col-lg-5 col-md-12">
+                    <input type="text" name="search" value="{{ request('search') }}" 
+                          class="form-control form-control-lg bg-light" 
+                          placeholder="Search products"
+                          style="border: 1px solid #e0e0e0; border-radius: 8px;">
+                </div>
+
+                <div class="col-lg-3 col-md-12">
+                    <select name="max_price" class="form-select form-select-lg bg-light" style="border: 1px solid #e0e0e0; border-radius: 8px;">
+                        <option value="">Filter by Price</option>
+                        <option value="100" {{ request('max_price') == '100' ? 'selected' : '' }}>Under $100</option>
+                        <option value="300" {{ request('max_price') == '300' ? 'selected' : '' }}>Under $300</option>
+                        <option value="500" {{ request('max_price') == '500' ? 'selected' : '' }}>Under $500</option>
+                        <option value="3000" {{ request('max_price') == '3000' ? 'selected' : '' }}>Under $3000</option>
+                    </select>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <button type="submit" class="btn btn-lg w-100 text-white" 
+                            style="background-color: #8c9282; border: none; border-radius: 8px; font-weight: 500; transition: 0.3s;">
+                        Filter
+                    </button>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <a href="{{ route('shop') }}" class="btn btn-lg w-100 text-white" 
+                      style="background-color: #6c757d; border: none; border-radius: 8px; font-weight: 500;">
+                        Clear
+                    </a>
+                </div>
+
+            </div>
+        </form>
+    </div>
     
     <div class="row row-cols-1 row-cols-md-3 g-5 mt-2">
-  
-  @foreach($products as $product)
-  <div class="col">
-    <div class="card h-100 border-0 rounded-0">
-    <a href="{{ route('product.detail', $product->id) }}" class="text-decoration-none text-dark d-block">
-      
-      <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top rounded-0" alt="{{ $product->title }}" style="height: 380px; width: 100%; object-fit: contain; object-position: top;">
-      
-      <div class="card-body text-center mt-3 p-0">
-        <h5 class="card-title text-uppercase text-dark" style="font-size: 14px; font-weight: 600; letter-spacing: 1px;">
-            {{ $product->title }}
-        </h5>
-    </a>    
-        <p class="card-text text-muted" style="font-size: 15px;">
-            ${{ $product->price }}
-        </p>
-      </div>
-      
+        @foreach($products as $product)
+            <div class="col">
+                <div class="card h-100 border-0 shadow-sm" style="border-radius: 12px;">
+                    <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top" alt="{{ $product->title }}" style="height: 350px; object-fit: contain;">
+                    
+                    <div class="card-body p-4 d-flex flex-column justify-content-between">
+                        <div>
+                            <h5 class="card-title text-uppercase" style="font-weight: 600; font-size: 16px; letter-spacing: 1px;">
+                                {{ $product->title }}
+                            </h5>
+                            <p class="card-text text-muted small" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                {{ $product->description }}
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="fw-bold fs-5 text-dark">${{ number_format($product->price, 2) }}</span>
+                            <a href="{{ url('/product/' . $product->id) }}" class="btn btn-sm btn-outline-dark text-uppercase px-3" style="border-radius: 5px; font-size: 12px; font-weight: 500;">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
-  </div>
-  @endforeach
-
-</div>
     
 </div>
+
 <footer class="py-5" style="background-color: #fcfcfc; border-top: 1px solid #eaeaea;">
   <div class="container">
     <div class="row">
@@ -169,7 +209,7 @@
       <div class="col-lg-3 col-md-6 mb-4">
         <h5 class="text-uppercase mb-4" style="font-weight: 600; font-size: 16px;">Help & Info</h5>
         <ul class="list-unstyled" style="line-height: 2;">
-          <li><a href="#" class="text-muted text-decoration-none">Track Your Order</a></li>
+          <li><a href="{{ route('profile.orders') }}" class="text-muted text-decoration-none">Track Your Order</a></li>
           <li><a href="#" class="text-muted text-decoration-none">Returns + Exchanges</a></li>
           <li><a href="#" class="text-muted text-decoration-none">Shipping + Delivery</a></li>
           <li><a href="#" class="text-muted text-decoration-none">FAQs</a></li>

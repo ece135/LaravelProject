@@ -62,7 +62,7 @@
                             <tbody>
                                 @foreach($orders as $order)
                                 <tr>
-                                    <td class="fw-bold py-3">{{ $order->order_number }}</td>
+                                    <td class="fw-bold py-3">{{ $order->invoice_no }}</td>
                                     
                                     <td class="text-muted">{{ $order->created_at->format('d.m.Y') }}</td>
                                     

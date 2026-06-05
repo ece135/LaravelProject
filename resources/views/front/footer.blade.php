@@ -56,7 +56,7 @@
           <div class="footer-menu footer-menu-003">
             <h5 class="widget-title text-uppercase mb-4">Help & Info</h5>
             <ul class="menu-list list-unstyled text-uppercase border-animation-left fs-6">
-              <li class="menu-item"><a href="#" class="item-anchor">Track Your Order</a></li>
+              <li class="menu-item"><a href="{{ route('orders') }}" class="item-anchor">Track Your Order</a></li>
               <li class="menu-item"><a href="#" class="item-anchor">Returns + Exchanges</a></li>
               <li class="menu-item"><a href="#" class="item-anchor">Shipping + Delivery</a></li>
               <li class="menu-item"><a href="#" class="item-anchor">Contact Us</a></li>

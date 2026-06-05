@@ -66,4 +66,6 @@ class FrontController extends Controller
     
     return view('category', compact('category', 'products', 'subCategories'));
 }
+
+    
 }

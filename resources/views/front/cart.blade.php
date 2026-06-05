@@ -35,7 +35,7 @@
                                 <tr>
                                     <td class="text-start" style="width: 80px;">
                                         <div style="width: 70px; height: 90px; background-color: #f4f4f4; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center;">
-                                            <span class="text-muted" style="font-size: 10px;">IMG</span>
+                                            <img src="{{ asset('storage/' . $details['image']) }}" class="img-fluid w-100" style="font-size: 10px;" >
                                         </div>
                                     </td>
                                     
@@ -88,7 +88,7 @@
                         <span>${{ number_format($total, 2) }}</span>
                     </div>
 
-                    <a href="#" class="btn btn-dark w-100 py-3 text-uppercase rounded-0" style="font-weight: 700; letter-spacing: 2px;">
+                    <a href="{{ route('checkout') }}" class="btn btn-dark w-100 py-3 text-uppercase rounded-0" style="font-weight: 700; letter-spacing: 2px;">
                         Proceed to Checkout
                     </a>
                 </div>
