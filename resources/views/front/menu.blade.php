@@ -68,7 +68,7 @@
               </a>
             </li>
             <li class="search-box mx-2">
-              <a href="#" class="search-button">
+              <a href="{{ route('shop') }}" class="search-button">
                 <svg width="24" height="24" viewBox="0 0 24 24">
                   <use xlink:href="#search"></use>
                 </svg>

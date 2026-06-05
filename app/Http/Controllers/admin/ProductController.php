@@ -30,7 +30,7 @@ class ProductController extends Controller
         }
 
 
-        $products = $query->where('status', 1)->get(); 
+        $products = $query->get(); 
 
         return view('shop', compact('products'));
     }
