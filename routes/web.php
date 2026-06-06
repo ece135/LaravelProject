@@ -39,13 +39,15 @@ require __DIR__.'/auth.php';
 
     
     Route::get('/', [FrontController::class, 'home'])->name('home');
-    Route::get('/admin-panel', [AdminHomeController::class, 'index'])->name('admin.dashboard');
+    
     
     Route::get('/shop', [ProductController::class, 'index'])->name('shop');
 
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
     Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
     Route::post('/categories/store', [CategoryController::class, 'store'])->name('categories.store');
+Route::middleware(['auth', \App\Http\Middleware\AdminMiddleware::class])->group(function () {
+    Route::get('/admin-panel', [AdminHomeController::class, 'index'])->name('admin.dashboard');
     Route::get('/categories/show/{category}', [CategoryController::class, 'show'])->name('admin.categories.show');
     Route::get('/categories/edit/{category}', [CategoryController::class, 'edit'])->name('admin.categories.edit');
     Route::put('/categories/update/{category}', [CategoryController::class, 'update'])->name('admin.categories.update');
@@ -93,6 +95,7 @@ require __DIR__.'/auth.php';
     Route::get('/informational/edit/{id}', [PageController::class, 'edit'])->name('admin.informational.edit');
     Route::put('/informational/update/{id}', [PageController::class, 'update'])->name('admin.informational.update');
     Route::delete('/informational/destroy/{id}', [PageController::class, 'destroy'])->name('admin.informational.destroy');
+});
     Route::get('/about-us', [FrontController::class, 'about'])->name('about');
     Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
     Route::get('/cart', [FrontController::class, 'cart'])->name('cart');
